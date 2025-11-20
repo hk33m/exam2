@@ -77,6 +77,12 @@ useEffect(() => {
 
 };
 
+    function showimage(id) {
+  return [31].includes(id);
+    }
+
+
+
   return (
     <div className="min-h-screen bg-gradient-to-br from-blue-50 to-blue-100 flex justify-center items-center p-5" dir="rtl">
       <div className=" w-[400px] md:w-[800px] bg-white shadow-2xl p-8 rounded-2xl">
@@ -108,9 +114,7 @@ useEffect(() => {
                 <UserPen className="text-blue-900" onClick={()=>{navigate("/");}}></UserPen>
                </div>
                  </div>
-              <div>
-                <img src={questions[currentIndex].url} width={"400px"}></img>
-              </div>
+                {questions[currentIndex].url !="" && (<div><img src={questions[currentIndex].url} width={"400px"}></img> </div>) }
               <p className="text-lg font-semibold text-gray-800">
                 {questions[currentIndex].question}
               </p>
@@ -131,7 +135,7 @@ useEffect(() => {
                       }`}
                   >
                     <span className="font-bold ml-3">{idx ==0 ? "أ" : idx==1 ? "ب" : idx==2 ? "ج" : "د" } -</span>
-                    {questions[currentIndex].id ==31 ? (<img src={option} width={"80px"}></img>) :  (<>{option}</>) }
+                    {showimage(questions[currentIndex].id) ? (<img src={option} width={"80px"}></img>) :  (<>{option}</>) }
                   </motion.button>
                 ))}
               </div>
