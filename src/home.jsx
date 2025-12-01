@@ -8,7 +8,8 @@ const [name,setname]=useState(()=>{
     const n=localStorage.getItem("name");
     return n!==null ? JSON.parse(n) : "" 
 });
-const answer = localStorage.getItem("answers");
+const saved = localStorage.getItem("currentIndex");
+const chick = saved!==null ? parseInt(saved) : 0 ;
   const handelbutton = ()=>{
         localStorage.setItem("name",JSON.stringify(name));
         navigate("/question");
@@ -50,7 +51,7 @@ const answer = localStorage.getItem("answers");
          whileTap={{ scale: 0.9 }}
          onClick={handelbutton}
          disabled={name==""}
-        className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-lg shadow-lg disabled:bg-gray-300 disabled:cursor-not-allowed">{answer!==null ? "إكمال الاسئلة" : "بدء الاسئلة"} </motion.button>
+        className="w-full cursor-pointer bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-xl text-lg shadow-lg disabled:bg-gray-300 disabled:cursor-not-allowed">{chick!==0 ? "إكمال الاسئلة" : "بدء الاسئلة"} </motion.button>
         </motion.div>
         </AnimatePresence>
         </div>
